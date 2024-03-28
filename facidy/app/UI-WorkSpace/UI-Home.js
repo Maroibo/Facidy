@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import Grid from "@mui/material/Grid";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -9,11 +8,12 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import Collapse from "@mui/material/Collapse";
-import Elements from "./ItemTypes";
+import { Elements } from "./ItemTypes";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import MainArea from "./MainArea";
 import DaragableElement from "./DaragableElement";
+import { useState, useEffect } from "react";
 
 function UiWorkspace() {
   return (
@@ -37,7 +37,7 @@ function UiWorkspace() {
 
         {/* Main Content */}
         <Grid item xs={9}>
-          <MainArea orginalElements={Elements} />
+          <MainArea />
         </Grid>
       </Grid>
     </DndProvider>
@@ -45,7 +45,7 @@ function UiWorkspace() {
 }
 
 function MyDropdown() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
   const renderElements = Elements.map((elementObject) => (
     <ListItemButton key={elementObject.id} sx={{ pl: 4 }}>
       <DaragableElement id={elementObject.id} element={elementObject.element} />

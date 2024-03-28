@@ -58,5 +58,9 @@ const Elements = [
     ),
   },
 ];
-
-export default Elements;
+const elementsEnum = {
+  1: "TextField",
+  2: "Checkbox",
+  3: "Select",
+};
+export { Elements, elementsEnum };

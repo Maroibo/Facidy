@@ -1,9 +1,13 @@
 import React from "react";
 import { useDrop } from "react-dnd";
 import Container from "@mui/material/Container";
+import generateJsonArray from "./elementsTree";
+import { Elements, elementsEnum } from "./ItemTypes";
 
-const MainArea = ({ orginalElements }) => {
+const MainArea = () => {
   const [elements, setElements] = React.useState([]);
+  const [elementsTree, setElementsTree] = React.useState([]);
+  const orginalElements = Elements;
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "element",
     drop: (item) => addElement(item.id), // Pass the item id to addElement
@@ -11,13 +15,19 @@ const MainArea = ({ orginalElements }) => {
       isOver: monitor.isOver(),
     }),
   }));
-
+  React.useEffect(() => {
+    setElementsTree((prevElementsTree) => [
+      ...prevElementsTree,
+      ...generateJsonArray(elementsEnum, elements),
+    ]);
+  }, [elements]);
   function addElement(id) {
     const elementToAdd = orginalElements.find((element) => element.id === id);
     if (elementToAdd) {
       setElements((prevElements) => [...prevElements, elementToAdd]);
     }
   }
+  // console.log(elementsTree);
 
   return (
     <div
@@ -28,8 +38,8 @@ const MainArea = ({ orginalElements }) => {
         backgroundColor: isOver ? "lightblue" : "white",
       }}
     >
-      {elements.map((element) => (
-        <Container maxWidth="md" key={element.id}>
+      {elements.map((element, index) => (
+        <Container maxWidth="md" key={index}>
           {element.element}
         </Container>
       ))}
