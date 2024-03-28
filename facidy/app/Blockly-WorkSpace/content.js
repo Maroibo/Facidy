@@ -1,21 +1,3 @@
-const INITIAL_XML =
-  '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="text" x="70" y="30"><field name="TEXT">XML</field></block></xml>';
-
-const INITIAL_JSON = {
-  blocks: {
-    languageVersion: 0,
-    blocks: [
-      {
-        type: "text",
-        id: "Y|Ad[E=)p$+Lu41MXB!o",
-        x: 70,
-        y: 30,
-        fields: { TEXT: "JSON" },
-      },
-    ],
-  },
-};
-
 const INITIAL_TOOLBOX_JSON = {
   kind: "categoryToolbox",
   contents: [
@@ -595,18 +577,6 @@ const INITIAL_TOOLBOX_JSON = {
     { kind: "sep" },
     {
       kind: "category",
-      name: "Custom Button",
-      colour: 19,
-      contents: [
-        {
-          kind: "button",
-          text: "A button",
-          callbackKey: "myFirstButtonPressed",
-        },
-      ],
-    },
-    {
-      kind: "category",
       name: "Variables",
       custom: "VARIABLE",
       colour: 330,
@@ -1038,8 +1008,6 @@ const INITIAL_TOOLBOX_CATEGORIES = [
 ];
 
 const ConfigFiles = {
-  INITIAL_XML,
-  INITIAL_JSON,
   INITIAL_TOOLBOX_XML,
   INITIAL_TOOLBOX_JSON,
   INITIAL_TOOLBOX_CATEGORIES,
