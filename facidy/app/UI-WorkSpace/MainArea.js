@@ -1,5 +1,6 @@
 import React from "react";
-import { useDrop } from "react-dnd"; // Correct import statement
+import { useDrop } from "react-dnd";
+import Container from "@mui/material/Container";
 
 const MainArea = ({ orginalElements }) => {
   const [elements, setElements] = React.useState([]);
@@ -27,7 +28,11 @@ const MainArea = ({ orginalElements }) => {
         backgroundColor: isOver ? "lightblue" : "white",
       }}
     >
-      {elements ? elements.map((element) => element.element) : null}
+      {elements.map((element) => (
+        <Container maxWidth="md" key={element.id}>
+          {element.element}
+        </Container>
+      ))}
     </div>
   );
 };
