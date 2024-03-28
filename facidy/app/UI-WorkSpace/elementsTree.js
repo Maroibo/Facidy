@@ -10,6 +10,7 @@ function generateJsonArray(elementIdMap, elements) {
           draggable: true, // Set to true if it exists in the enum
           children: [],
         };
+        if (elementType === "Select") jsonObject.value = "";
       } else {
         jsonObject = {
           type: elementType,
