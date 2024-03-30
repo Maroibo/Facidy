@@ -4,7 +4,7 @@ import Blockly from "blockly";
 import { javascriptGenerator } from "blockly/javascript";
 import ConfigFiles from "./content";
 import { Container } from "@mui/system";
-import { useState, useEffect, createElement } from "react";
+import { useState, useEffect } from "react";
 import * as styles from "./b-styles.css";
 function BlocklyMain() {
   const [toolboxConfiguration, setToolboxConfiguration] = useState(
@@ -12,7 +12,6 @@ function BlocklyMain() {
   );
   const [generatedJson, setGeneratedJson] = useState("");
   const [generatedCode, setGeneratedCode] = useState("");
-
   const onWorkspaceChange = (workspace) => {
     workspace.registerButtonCallback("myFirstButtonPressed", () => {
       alert("button is pressed");
@@ -32,7 +31,7 @@ function BlocklyMain() {
       <Container
         className="workspace-containers"
         maxWidth="false"
-        sx={{ height: "100vh" }}
+        sx={{ height: "100vh", padding: "0 !important" }}
       >
         <BlocklyWorkspace
           toolboxConfiguration={toolboxConfiguration}

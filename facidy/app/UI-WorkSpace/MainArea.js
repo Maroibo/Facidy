@@ -1,7 +1,7 @@
 import React from "react";
 import { useDrop } from "react-dnd";
 import Container from "@mui/material/Container";
-import generateJsonArray from "./elementsTree";
+import { generateJsonArray } from "./elementsTree";
 import { Elements, elementsEnum } from "./ItemTypes";
 
 const MainArea = () => {
@@ -16,18 +16,25 @@ const MainArea = () => {
     }),
   }));
   React.useEffect(() => {
-    setElementsTree((prevElementsTree) => [
-      ...prevElementsTree,
-      ...generateJsonArray(elementsEnum, elements),
-    ]);
+    setElementsTree((prevElementsTree) => {
+      const updatedElementsTree = [
+        ...generateJsonArray(elementsEnum, elements),
+      ];
+      localStorage.setItem(
+        "elementParseTree",
+        JSON.stringify(updatedElementsTree)
+      );
+      return updatedElementsTree;
+    });
+    
   }, [elements]);
+
   function addElement(id) {
     const elementToAdd = orginalElements.find((element) => element.id === id);
     if (elementToAdd) {
       setElements((prevElements) => [...prevElements, elementToAdd]);
     }
   }
-  // console.log(elementsTree);
 
   return (
     <div
